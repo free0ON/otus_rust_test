@@ -1,0 +1,3 @@
+[workspace]
+members = ["lifetimes", "partial_borrowing"]
+resolver = "3"

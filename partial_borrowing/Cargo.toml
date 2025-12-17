@@ -1,0 +1,10 @@
+[package]
+name = "partial_borowing"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+[features]
+# Define a feature named "my_feature"
+partial_borrowing = []
