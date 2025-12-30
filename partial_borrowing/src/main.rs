@@ -3,15 +3,13 @@ struct Point<T> {
     y: T,
 }
 
-impl<T> Point<T>
-//where T: Copy,
-{
-    pub fn x_mut(&mut self) -> *mut T {
-        &raw mut self.x
+impl<T> Point<T> {
+    pub fn x_mut(&mut self) -> &mut T {
+        &mut self.x
     }
 
-    pub fn y_mut(&mut self) -> *mut T {
-        &raw mut self.y
+    pub fn y_mut(&mut self) -> &mut T {
+        &mut self.y
     }
 }
 
@@ -24,6 +22,21 @@ impl<T> PointTuple<T> {
 
     pub fn y_mut(&mut self) -> *mut T {
         &raw mut self.1
+    }
+}
+
+struct PointRaw<T> {
+    x: T,
+    y: T,
+}
+
+impl<T> PointRaw<T> {
+    pub fn x_mut(&mut self) -> *mut T {
+        &raw mut self.x
+    }
+
+    pub fn y_mut(&mut self) -> *mut T {
+        &raw mut self.y
     }
 }
 
@@ -73,8 +86,8 @@ fn partial_raw_tupple_test() {
 }
 
 #[test]
-fn partial_raw_stuct_test() {
-    let mut point: Point<i32> = Point::<i32> { x: 1, y: 1 };
+fn partial_raw_struct_test() {
+    let mut point: PointRaw<i32> = PointRaw::<i32> { x: 1, y: 1 };
     let x_mut = point.x_mut();
     let y_mut = point.y_mut();
     unsafe {
